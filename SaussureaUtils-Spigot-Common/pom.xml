@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>SaussureaUtils-Common</artifactId>
+    <artifactId>SaussureaUtils-Spigot-Common</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -54,4 +54,19 @@
             <url>https://maven.flowerinsnow.online:10443/repository/maven-public/</url>
         </repository>
     </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>flowerinsnow</id>
+            <url>https://maven.flowerinsnow.online:10443/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>online.flowerinsnow</groupId>
+            <artifactId>SaussureaUtils-Common</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+    </dependencies>
 </project>
