@@ -30,6 +30,10 @@
     <version>3.4.1</version>
     <configuration>
         <relocations>
+            <!--
+            把online.flowerinsnow.saussureautils包
+            重定向到your.pack.here.shaded.online.flowerinsnow.saussureautils
+            -->
             <relocation>
                 <pattern>online.flowerinsnow.saussureautils</pattern>
                 <shadedPattern>your.pack.here.shaded.online.flowerinsnow.saussureautils</shadedPattern>
