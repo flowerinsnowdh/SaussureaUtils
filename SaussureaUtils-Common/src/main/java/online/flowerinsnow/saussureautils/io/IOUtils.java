@@ -466,4 +466,30 @@ public final class IOUtils {
             return false;
         }
     }
+
+    /**
+     * 删除文件或目录
+     * 若是目录，则递归删除目录下所有文件
+     *
+     * @param file 需要删除的文件或目录
+     */
+    public static void delete(File file) {
+        Objects.requireNonNull(file);
+        if (file.isDirectory()) {
+            //noinspection ConstantConditions
+            for (File f : file.listFiles()) {
+                delete(f);
+            }
+            //noinspection ResultOfMethodCallIgnored
+            file.delete();
+        } else if (file.isFile()) {
+            //noinspection ResultOfMethodCallIgnored
+            file.delete();
+        }
+    }
+
+    public static void delete(Path path) {
+        Objects.requireNonNull(path);
+        delete(path.toFile());
+    }
 }

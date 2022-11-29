@@ -3,7 +3,8 @@
 
 # 模块列表
 - `Common` - [java](https://zh.wikipedia.org/wiki/Java)基础常用类
-- `SaussureaUtils-Spigot-1.8.8` - Spigot 1.8.8常用类
+- `Spigot-1.8.8` - Spigot通用常用类
+- `Spigot-1.8.8` - Spigot1.8.8常用类
 
 # 使用
 我怎么不会用github packages啊，那算了，用我自己的仓库吧
