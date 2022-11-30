@@ -2,6 +2,7 @@ package online.flowerinsnow.saussureautils.reflect;
 
 import online.flowerinsnow.saussureautils.object.IExceptionHandler;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -334,6 +335,100 @@ public class ReflectUtils {
         } catch (InvocationTargetException e) {
             if (exceptionHandler != null) {
                 exceptionHandler.accept(e.getCause());
+            }
+            return null;
+        }
+    }
+
+    /**
+     * 调用Class.forName(String)，并将异常交由异常处理器处理
+     *
+     * @param name 类名
+     * @param exceptionHandler 异常处理器，可为空
+     * @return 获取的类
+     */
+    public static Class<?> getClass(String name, IExceptionHandler<ClassNotFoundException> exceptionHandler) {
+        Objects.requireNonNull(name);
+        try {
+            return Class.forName(name);
+        } catch (ClassNotFoundException e) {
+            if (exceptionHandler != null) {
+                exceptionHandler.accept(e);
+            }
+            return null;
+        }
+    }
+
+    /**
+     * 获取包下的类
+     *
+     * @param pkg 包名
+     * @param name 类名
+     * @return 获取的类
+     * @throws ClassNotFoundException if the class cannot be located
+     */
+    public static Class<?> getClass(String pkg, String name) throws ClassNotFoundException {
+        Objects.requireNonNull(pkg);
+        Objects.requireNonNull(name);
+        return Class.forName(pkg + "." + name);
+    }
+
+    /**
+     * 获取包下的类，并将异常交由异常处理器处理
+     *
+     * @param pkg 包名
+     * @param name 类名
+     * @param exceptionHandler 异常处理器，可为空
+     * @return 获取的类
+     */
+    public static Class<?> getClass(String pkg, String name, IExceptionHandler<ClassNotFoundException> exceptionHandler) {
+        Objects.requireNonNull(pkg);
+        Objects.requireNonNull(name);
+        return getClass(pkg + "." + name, exceptionHandler);
+    }
+
+    /**
+     * new一个类，调用构造方法
+     *
+     * @param cls 类
+     * @param paramTypes 构造方法参数类型
+     * @param params 参数
+     * @return new出来的对象
+     * @param <T> 类类型
+     * @throws InvocationTargetException if the underlying constructor throws an exception.
+     */
+    public static <T> T newInstance(Class<T> cls, Class<?>[] paramTypes, Object... params) throws InvocationTargetException {
+        Objects.requireNonNull(cls);
+        try {
+            Constructor<T> constructor = cls.getDeclaredConstructor(paramTypes);
+            constructor.setAccessible(true);
+            return constructor.newInstance(params);
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * new一个类，调用构造方法，并将异常交由异常处理器处理
+     *
+     * @param cls 类
+     * @param paramTypes 构造方法参数类型
+     * @param exceptionHandler 异常处理器，可为空
+     * @param params 参数
+     * @return new出来的对象
+     * @param <T> 类类型
+     */
+    public static <T> T newInstance(Class<T> cls, Class<?>[] paramTypes, IExceptionHandler<InvocationTargetException> exceptionHandler, Object... params) {
+        Objects.requireNonNull(cls);
+        try {
+            Constructor<T> constructor = cls.getDeclaredConstructor(paramTypes);
+            constructor.setAccessible(true);
+            return constructor.newInstance(params);
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            if (exceptionHandler != null) {
+                exceptionHandler.accept(e);
             }
             return null;
         }
