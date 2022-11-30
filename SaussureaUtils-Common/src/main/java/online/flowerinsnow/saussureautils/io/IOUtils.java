@@ -466,4 +466,33 @@ public final class IOUtils {
             return false;
         }
     }
+
+    /**
+     * 递归删除文件或目录
+     *
+     * @param file 文件或目录
+     */
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    public static void delete(File file) {
+        Objects.requireNonNull(file);
+        if (file.isFile()) {
+            file.delete();
+        } else if (file.isDirectory()) {
+            //noinspection ConstantConditions
+            for (File f : file.listFiles()) {
+                delete(f);
+            }
+            file.delete();
+        }
+    }
+
+    /**
+     * 递归删除文件或目录
+     *
+     * @param path 文件或目录
+     */
+    public static void delete(Path path) {
+        Objects.requireNonNull(path);
+        delete(path.toFile());
+    }
 }

@@ -8,18 +8,16 @@
 # 使用
 我怎么不会用github packages啊，那算了，用我自己的仓库吧
 ```xml
-<repositories>
-    <repository>
-        <id>flowerinsnow</id>
-        <url>https://maven.flowerinsnow.online:10443/repository/maven-public/</url>
-    </repository>
-</repositories>
+<repository>
+    <id>flowerinsnow</id>
+    <url>https://maven.flowerinsnow.online:10443/repository/maven-public/</url>
+</repository>
 ```
 ```xml
 <dependency>
     <groupId>online.flowerinsnow</groupId>
     <artifactId>SaussureaUtils-[模块]</artifactId>
-    <version>1.1.5</version>
+    <version>1.1.6</version>
 </dependency>
 ```
 建议在shade时使用relocation来防止依赖冲突
