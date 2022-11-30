@@ -1,4 +1,4 @@
-package online.flowerinsnow.sassureutils.spigot.item;
+package online.flowerinsnow.saussureautils.spigot.item;
 
 import online.flowerinsnow.saussureautils.annotation.DependOf;
 import online.flowerinsnow.saussureautils.annotation.Dependency;

@@ -1,6 +1,6 @@
-package online.flowerinsnow.sassureutils.spigot.item;
+package online.flowerinsnow.saussureautils.spigot.item;
 
-import online.flowerinsnow.sassureutils.spigot.util.MessageUtils;
+import online.flowerinsnow.saussureautils.spigot.util.MessageUtils;
 import online.flowerinsnow.saussureautils.SaussureUtils;
 import online.flowerinsnow.saussureautils.annotation.DependOf;
 import online.flowerinsnow.saussureautils.annotation.Dependency;

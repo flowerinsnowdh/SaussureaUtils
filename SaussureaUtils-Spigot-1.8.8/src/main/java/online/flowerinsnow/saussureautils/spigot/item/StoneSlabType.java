@@ -1,4 +1,4 @@
-package online.flowerinsnow.sassureutils.spigot.item;
+package online.flowerinsnow.saussureautils.spigot.item;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

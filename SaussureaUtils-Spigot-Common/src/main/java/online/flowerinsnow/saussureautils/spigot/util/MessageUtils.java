@@ -1,4 +1,4 @@
-package online.flowerinsnow.sassureutils.spigot.util;
+package online.flowerinsnow.saussureautils.spigot.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
