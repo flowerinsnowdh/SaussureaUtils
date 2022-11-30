@@ -12,6 +12,7 @@
         <module>SaussureaUtils-Common</module>
         <module>SaussureaUtils-Spigot-1.8.8</module>
         <module>SaussureaUtils-Spigot-Common</module>
+        <module>SaussureaUtils-XML</module>
     </modules>
 
     <properties>
