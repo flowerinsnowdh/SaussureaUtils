@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -79,6 +80,9 @@ public class ItemStackBuilder {
     public ItemStackBuilder addLore(String lore) {
         metaOperation(meta -> {
             List<String> list = meta.getLore();
+            if (list == null) {
+                list = new ArrayList<>();
+            }
             list.add(MessageUtils.parseColor(lore));
             meta.setLore(list);
         });
