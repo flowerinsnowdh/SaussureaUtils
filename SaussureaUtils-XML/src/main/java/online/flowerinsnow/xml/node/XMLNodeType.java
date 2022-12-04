@@ -1,9 +1,9 @@
-package online.flowerinsnow.xml;
+package online.flowerinsnow.xml.node;
 
 /**
  * XML节点类型
  */
-public enum NodeType {
+public enum XMLNodeType {
     /**
      * 元素，也就是一个标签
      */
@@ -36,12 +36,12 @@ public enum NodeType {
     NOTATION(12);
     public final int id;
 
-    NodeType(int id) {
+    XMLNodeType(int id) {
         this.id = id;
     }
 
-    public static NodeType getByID(int id) {
-        for (NodeType value : values()) {
+    public static XMLNodeType getByID(int id) {
+        for (XMLNodeType value : values()) {
             if (value.id == id) {
                 return value;
             }
