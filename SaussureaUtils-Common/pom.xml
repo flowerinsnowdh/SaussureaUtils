@@ -47,11 +47,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>flowerinsnow</id>
-            <url>https://maven.flowerinsnow.online:10443/repository/maven-public/</url>
-        </repository>
-    </distributionManagement>
 </project>
