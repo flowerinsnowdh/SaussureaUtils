@@ -5,7 +5,7 @@
 - `Common` - [java](https://zh.wikipedia.org/wiki/Java)基础常用类
 - `Spigot-Common` - Spigot通用常用类
 - `Spigot-1.8.8` - Spigot1.8.8常用类
-- `XML` - 一个XML解析器，基于W3C DOM，[README.md](SaussureaUtils-XML/README.md])
+- `XML` - 一个XML解析器，基于W3C DOM，[README.md](SaussureaUtils-XML/README.md)
 
 # 使用
 我怎么不会用github packages啊，那算了，用我自己的仓库吧
