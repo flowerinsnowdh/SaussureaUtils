@@ -26,32 +26,6 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
     }
 
     /**
-     * 获取所有节点属性
-     *
-     * @return 所有节点属性
-     */
-    public Map<String, String> getAttributes() {
-        NamedNodeMap map = wrapped.getAttributes();
-        Map<String, String> attributes = new HashMap<>();
-        for (int i = 0; i < map.getLength(); i++) {
-            Node node = map.item(i);
-            attributes.put(node.getNodeName(), node.getNodeValue());
-        }
-        return attributes;
-    }
-
-    /**
-     * 获取节点属性，若不存在返回null
-     *
-     * @param name 属性名
-     * @return 节点属性
-     */
-    public String getAttribute(String name) {
-        Objects.requireNonNull(name);
-        return getAttributes().get(name);
-    }
-
-    /**
      * 获取节点下所有子节点
      *
      * @return 子节点列表
@@ -136,7 +110,7 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的字符串值
-     * 如果该节点是元素或无这个节点返回null
+     * 如果无这个节点返回null
      *
      * @param name 子节点名
      * @return 子节点下的字符串值
@@ -171,7 +145,7 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的byte值
-     * 如果该节点是元素或无这个节点返回null
+     * 如果无这个节点返回null
      *
      * @param name 子节点名
      * @return 子节点下的byte值
@@ -192,10 +166,10 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的byte数值
-     * 如果该节点是元素或无这个节点返回0
+     * 如果无这个节点返回0
      *
      * @param name 子节点名
-     * @return 子节点下的byte数值
+     * @return 子节点下的byte数值，若不存在返回0
      * @throws XMLWrongTypeException 当数据类型不是byte或是元素时抛出
      */
     public byte getByteValue(String name) throws XMLWrongTypeException {
@@ -205,7 +179,7 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的short值
-     * 如果该节点是元素或无这个节点返回null
+     * 如果无这个节点返回null
      *
      * @param name 子节点名
      * @return 子节点下的short值
@@ -226,10 +200,10 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的short数值
-     * 如果该节点是元素或无这个节点返回0
+     * 如果无这个节点返回0
      *
      * @param name 子节点名
-     * @return 子节点下的short数值
+     * @return 子节点下的short数值，若不存在返回0
      * @throws XMLWrongTypeException 当数据类型不是short或是元素时抛出
      */
     public short getShortValue(String name) throws XMLWrongTypeException {
@@ -239,7 +213,7 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的Int值
-     * 如果该节点是元素或无这个节点返回null
+     * 如果无这个节点返回null
      *
      * @param name 子节点名
      * @return 子节点下的Int值
@@ -260,10 +234,10 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的Int数值
-     * 如果该节点是元素或无这个节点返回0
+     * 如果无这个节点返回0
      *
      * @param name 子节点名
-     * @return 子节点下的Int数值
+     * @return 子节点下的Int数值，若不存在返回0
      * @throws XMLWrongTypeException 当数据类型不是Int或是元素时抛出
      */
     public int getIntValue(String name) throws XMLWrongTypeException {
@@ -272,7 +246,7 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的long值
-     * 如果该节点是元素或无这个节点返回null
+     * 如果无这个节点返回null
      *
      * @param name 子节点名
      * @return 子节点下的long值
@@ -293,10 +267,10 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的long数值
-     * 如果该节点是元素或无这个节点返回0
+     * 如果无这个节点返回0
      *
      * @param name 子节点名
-     * @return 子节点下的long数值
+     * @return 子节点下的long数值，若不存在返回0
      * @throws XMLWrongTypeException 当数据类型不是long或是元素时抛出
      */
     public long getLongValue(String name) throws XMLWrongTypeException {
@@ -306,7 +280,7 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的float值
-     * 如果该节点是元素或无这个节点返回null
+     * 如果无这个节点返回null
      *
      * @param name 子节点名
      * @return 子节点下的float值
@@ -327,10 +301,10 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的float数值
-     * 如果该节点是元素或无这个节点返回0
+     * 如果无这个节点返回0.0
      *
      * @param name 子节点名
-     * @return 子节点下的float数值
+     * @return 子节点下的float数值，若不存在返回0.0
      * @throws XMLWrongTypeException 当数据类型不是float或是元素时抛出
      */
     public float getFloatValue(String name) throws XMLWrongTypeException {
@@ -340,7 +314,7 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的double值
-     * 如果该节点是元素或无这个节点返回null
+     * 如果无这个节点返回null
      *
      * @param name 子节点名
      * @return 子节点下的double值
@@ -361,10 +335,10 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的double数值
-     * 如果该节点是元素或无这个节点返回0
+     * 如果无这个节点返回0.0
      *
      * @param name 子节点名
-     * @return 子节点下的double数值
+     * @return 子节点下的double数值，若不存在返回0.0
      * @throws XMLWrongTypeException 当数据类型不是double或是元素时抛出
      */
     public double getDoubleValue(String name) throws XMLWrongTypeException {
@@ -374,7 +348,7 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的boolean值
-     * 如果该节点是元素或无这个节点返回null
+     * 如果无这个节点返回null
      *
      * @param name 子节点名
      * @return 子节点下的boolean值
@@ -394,10 +368,10 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
 
     /**
      * 获取子节点下的boolean数值
-     * 如果该节点是元素或无这个节点返回0
+     * 如果无这个节点返回0
      *
      * @param name 子节点名
-     * @return 子节点下的boolean数值
+     * @return 子节点下的boolean数值，若不存在返回false
      */
     public boolean getBooleanValue(String name) {
         Objects.requireNonNull(name);
@@ -413,24 +387,26 @@ public abstract class XMLNodeWithChildren extends WrappedXMLNode {
     public void set(String name, Object value) {
         Objects.requireNonNull(name);
         for (XMLNode childNode : getChildNodes()) { // 遍历已有的子节点
-            if (childNode instanceof XMLNodeWithChildren) { // 是可以操作的元素
-                XMLNodeWithChildren node = (XMLNodeWithChildren) childNode;
-                if (!name.equals(node.getName())) { // 不是想要的元素，从for重新开始
-                    continue;
+            if (!(childNode instanceof XMLNodeWithChildren)) { // 不是可以操作的元素
+                continue;
+            }
+            XMLNodeWithChildren node = (XMLNodeWithChildren) childNode;
+            if (!name.equals(node.getName())) { // 不是想要的元素
+                continue;
+            }
+            // 开始更改
+            for (XMLNode nodeChildNode : node.getChildNodes()) { // 遍历子元素的子节点
+                if (nodeChildNode instanceof XMLNodeText) {
+                    ((XMLNodeText) nodeChildNode).setValue(String.valueOf(value));
                 }
-                for (XMLNode nodeChildNode : node.getChildNodes()) { // 遍历子元素的子节点
-                    if (nodeChildNode instanceof XMLNodeText) {
-                        ((XMLNodeText) nodeChildNode).setValue(String.valueOf(value));
-                    }
-                    return;
-                }
-                // 没有名为name的元素，添加元素
-                XMLNodeElement element = XMLFactory.newElement(getOwner(), name); // 添加的元素
-                XMLNodeText text = XMLFactory.newText(getOwner(), String.valueOf(value));
-                element.append(text);
-                node.append(element);
+                return;
             }
         }
+        // 没有名为name的元素，添加元素
+        XMLNodeElement element = XMLFactory.newElement(getOwner(), name); // 添加的元素
+        XMLNodeText text = XMLFactory.newText(getOwner(), String.valueOf(value));
+        element.append(text);
+        this.append(element);
     }
 
     /**

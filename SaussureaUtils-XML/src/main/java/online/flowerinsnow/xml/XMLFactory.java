@@ -1,6 +1,7 @@
 package online.flowerinsnow.xml;
 
 import online.flowerinsnow.xml.exception.XMLParseException;
+import online.flowerinsnow.xml.node.XMLNodeComment;
 import online.flowerinsnow.xml.node.XMLNodeDocument;
 import online.flowerinsnow.xml.node.XMLNodeElement;
 import online.flowerinsnow.xml.node.XMLNodeText;
@@ -49,17 +50,54 @@ public final class XMLFactory {
         }
     }
 
+    /**
+     * 在文档下创建新的元素节点
+     *
+     * @param owner 文档
+     * @param name 元素名
+     * @return 创建的元素
+     */
     public static XMLNodeElement newElement(XMLNodeDocument owner, String name) {
         return new XMLNodeElement(owner.getWrapped().createElement(name));
     }
 
+    /**
+     * 在文档下创建新的文本节点
+     *
+     * @param owner 文档
+     * @param value 文本内容
+     * @return 创建的文本
+     */
     public static XMLNodeText newText(XMLNodeDocument owner, String value) {
         return new XMLNodeText(owner.getWrapped().createTextNode(value));
     }
 
-    public static XMLNodeDocument parse(InputStream in) throws IOException, ParserConfigurationException {
+    /**
+     * 在文档下创建新的注释节点
+     *
+     * @param owner 文档
+     * @param value 注释内容
+     * @return 创建的注释
+     */
+    public static XMLNodeComment newComment(XMLNodeDocument owner, String value) {
+        return new XMLNodeComment(owner.getWrapped().createComment(value));
+    }
+
+    /**
+     * 将输入流内的内容解析为文档
+     *
+     * @param in 输入流
+     * @return 解析出的文档
+     * @throws IOException 当出现IO异常时抛出
+     */
+    public static XMLNodeDocument parse(InputStream in) throws IOException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
+        DocumentBuilder db;
+        try {
+            db = dbf.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        }
         try {
             return new XMLNodeDocument(db.parse(in));
         } catch (SAXException e) {
@@ -67,9 +105,21 @@ public final class XMLFactory {
         }
     }
 
-    public static XMLNodeDocument parse(File file) throws ParserConfigurationException, IOException {
+    /**
+     * 将文件内的内容解析为文档
+     *
+     * @param file 文件
+     * @return 解析出的文档
+     * @throws IOException 当出现IO异常时抛出
+     */
+    public static XMLNodeDocument parse(File file) throws IOException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
+        DocumentBuilder db;
+        try {
+            db = dbf.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        }
         try {
             return new XMLNodeDocument(db.parse(file));
         } catch (SAXException e) {
@@ -77,6 +127,13 @@ public final class XMLFactory {
         }
     }
 
+    /**
+     * 将文档写入输出流
+     *
+     * @param document 文档
+     * @param out 输出流
+     * @throws TransformerException 当文档转换或IO异常时抛出
+     */
     public static void save(XMLNodeDocument document, OutputStream out) throws TransformerException {
         TransformerFactory factory = TransformerFactory.newInstance();
         Transformer transformer;

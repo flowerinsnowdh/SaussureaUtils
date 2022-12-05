@@ -22,7 +22,9 @@ public class WrappedXMLNode implements XMLNode {
 
     @Override
     public XMLNodeDocument getOwner() {
-        return new XMLNodeDocument(wrapped.getOwnerDocument());
+        return this instanceof XMLNodeDocument ?
+                (XMLNodeDocument) this :
+                new XMLNodeDocument(wrapped.getOwnerDocument());
     }
 
     @Override
