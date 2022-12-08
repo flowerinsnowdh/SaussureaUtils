@@ -130,6 +130,7 @@ public class ReflectUtils {
      * @param paramTypes 方法的参数类型列表
      * @param params 调用参数
      * @return 转换后的返回值
+     * @throws Throwable 当调用的方法抛出异常时抛出
      */
     public static Object invokeVirtual(Object object, String methodName, Class<?>[] paramTypes, Object... params) throws Throwable {
         Objects.requireNonNull(object);
@@ -154,6 +155,7 @@ public class ReflectUtils {
      * @param paramTypes 方法的参数类型列表
      * @param params 调用参数
      * @return 转换后的返回值
+     * @throws Throwable 当调用的方法抛出异常时抛出
      */
     public static Object invokeStatic(Class<?> cls, String methodName, Class<?>[] paramTypes, Object... params) throws Throwable {
         Objects.requireNonNull(cls);
@@ -235,6 +237,7 @@ public class ReflectUtils {
      * @param params 调用参数
      * @return 转换后的返回值
      * @param <T> 指定类型
+     * @throws Throwable 当调用的方法抛出异常时抛出
      */
     public static <T> T invokeVirtual(Object object, String methodName, Class<?>[] paramTypes, Class<T> returnType, Object... params) throws Throwable {
         Objects.requireNonNull(object);
@@ -262,6 +265,7 @@ public class ReflectUtils {
      * @param params 调用参数
      * @return 转换后的返回值
      * @param <T> 指定类型
+     * @throws Throwable 当调用的方法抛出异常时抛出
      */
     public static <T> T invokeStatic(Class<?> cls, String methodName, Class<?>[] paramTypes, Class<T> returnType, Object... params) throws Throwable {
         Objects.requireNonNull(cls);

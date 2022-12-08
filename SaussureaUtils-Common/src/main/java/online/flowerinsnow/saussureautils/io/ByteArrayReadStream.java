@@ -237,9 +237,9 @@ public class ByteArrayReadStream extends InputStream {
     }
 
     /**
-     * Closing a <tt>ByteArrayInputStream</tt> has no effect. The methods in
+     * Closing a &lt;tt&gt;ByteArrayInputStream&lt;/tt&gt; has no effect. The methods in
      * this class can be called after the stream has been closed without
-     * generating an <tt>IOException</tt>.
+     * generating an &lt;tt&gt;IOException&lt;/tt&gt;.
      */
     public void close() {
     }
