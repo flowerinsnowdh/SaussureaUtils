@@ -10,4 +10,6 @@ public @interface Dependency {
     String groupId();
     String artifactId();
     String version();
+    String minVersion() default "";
+    String maxVersion() default "";
 }

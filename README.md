@@ -4,7 +4,7 @@
 # 模块列表
 - `Common` - [java](https://zh.wikipedia.org/wiki/Java)基础常用类
 - `Spigot-Common` - Spigot通用常用类
-- `Spigot-1.8.8` - Spigot1.8.8常用类
+- `Spigot-18-111` - Spigot1.8~1.11常用类
 - `XML` - 一个XML解析器，基于W3C DOM，[README.md](SaussureaUtils-XML/README.md)
 
 # 使用
@@ -19,7 +19,7 @@
 <dependency>
     <groupId>online.flowerinsnow</groupId>
     <artifactId>SaussureaUtils-[模块]</artifactId>
-    <version>1.4.1</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 建议在shade时使用relocation来防止依赖冲突

@@ -7,10 +7,10 @@
     <groupId>online.flowerinsnow</groupId>
     <artifactId>SaussureaUtils</artifactId>
     <packaging>pom</packaging>
-    <version>1.4.1</version>
+    <version>2.0.0</version>
     <modules>
         <module>SaussureaUtils-Common</module>
-        <module>SaussureaUtils-Spigot-1.8.8</module>
+        <module>SaussureaUtils-Spigot-18-111</module>
         <module>SaussureaUtils-Spigot-Common</module>
         <module>SaussureaUtils-XML</module>
     </modules>

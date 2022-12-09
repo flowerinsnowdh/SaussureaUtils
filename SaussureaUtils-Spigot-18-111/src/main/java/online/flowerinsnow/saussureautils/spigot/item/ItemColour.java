@@ -11,7 +11,9 @@ import java.util.Objects;
         @Dependency(
                 groupId = "org.spigotmc",
                 artifactId = "spigot-api",
-                version = "1.8.8-R0.1-SNAPSHOT"
+                version = "1.8.8-R0.1-SNAPSHOT",
+                minVersion = "1.8.3-R0.1-SNAPSHOT",
+                maxVersion = "1.11.2-R0.1-SNAPSHOT"
         )
 )
 public enum ItemColour {
