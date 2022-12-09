@@ -206,6 +206,7 @@ public class ReflectUtils {
      * @param cls 类
      * @param methodName 方法名
      * @param paramTypes 方法的参数类型列表
+     * @param exceptionHandler 异常处理器，可为空
      * @param params 调用参数
      * @return 转换后的返回值
      */
@@ -321,6 +322,7 @@ public class ReflectUtils {
      * @param methodName 方法名
      * @param paramTypes 方法的参数类型列表
      * @param returnType 返回值类型，获取的返回值会被自动转换成这个类型并返回
+     * @param exceptionHandler 异常处理器，可为空
      * @param params 调用参数
      * @return 转换后的返回值
      * @param <T> 指定类型

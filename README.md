@@ -20,7 +20,7 @@
 <dependency>
     <groupId>online.flowerinsnow</groupId>
     <artifactId>SaussureaUtils-[模块]</artifactId>
-    <version>2.0.1</version>
+    <version>2.1.0</version>
 </dependency>
 ```
 建议在shade时使用relocation来防止依赖冲突
