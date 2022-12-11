@@ -88,7 +88,7 @@ public final class CommandUtils {
      * @param noPermissionMessage 没有权限时发送的消息
      */
     public static void setNoPermissionMessage(String noPermissionMessage) {
-        NO_PERMISSION_MESSAGE = MessageUtils.parseColor(noPermissionMessage);
+        NO_PERMISSION_MESSAGE = MessageUtils.parseColour(noPermissionMessage);
     }
 
     /**
@@ -97,7 +97,7 @@ public final class CommandUtils {
      * @param mustBePlayerMessage 玩家不是玩家但要求是玩家时发送的消息
      */
     public static void setMustBePlayerMessage(String mustBePlayerMessage) {
-        MUST_BE_PLAYER_MESSAGE = MessageUtils.parseColor(mustBePlayerMessage);
+        MUST_BE_PLAYER_MESSAGE = MessageUtils.parseColour(mustBePlayerMessage);
     }
 
     /**

@@ -68,12 +68,12 @@ public class ItemStackBuilder {
     }
 
     public ItemStackBuilder setDisplayName(String displayName) {
-        metaOperation(meta -> meta.setDisplayName(MessageUtils.parseColor(displayName)));
+        metaOperation(meta -> meta.setDisplayName(MessageUtils.parseColour(displayName)));
         return this;
     }
 
     public ItemStackBuilder setLore(List<String> lore) {
-        metaOperation(meta -> meta.setLore(MessageUtils.parseColor(lore)));
+        metaOperation(meta -> meta.setLore(MessageUtils.parseColour(lore)));
         return this;
     }
 
@@ -83,7 +83,7 @@ public class ItemStackBuilder {
             if (list == null) {
                 list = new ArrayList<>();
             }
-            list.add(MessageUtils.parseColor(lore));
+            list.add(MessageUtils.parseColour(lore));
             meta.setLore(list);
         });
         return this;
