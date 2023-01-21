@@ -2,11 +2,11 @@
 也就是[雪莲](https://zh.wikipedia.org/wiki/%E9%9B%AA%E8%8E%B2)Utils，只是[冬花](https://github.com/flowerinsnowdh)的小工具箱而已，我认为叫它`FlowerinsnowUtils`太过单调，就叫这个吧
 
 # 模块列表
-- `Common` - [java](https://zh.wikipedia.org/wiki/Java)基础常用类
-- `Spigot-Common` - Spigot通用常用类
-- `Spigot-18-111` - Spigot1.8~1.11常用类
-- `Spigot-112` - Spigot1.12常用类
-- `XML` - 一个XML解析器，基于W3C DOM，[README.md](SaussureaUtils-XML/README.md)
+- `common` - [java](https://zh.wikipedia.org/wiki/Java)基础常用类
+- `spigot-common` - Spigot通用常用类
+- `spigot-18-111` - Spigot1.8~1.11常用类
+- `spigot-112` - Spigot1.12常用类
+- `xml` - 一个XML解析器，基于W3C DOM，[README.md](saussureautils-xml/README.md)
 
 # 使用
 我怎么不会用github packages啊，那算了，用我自己的仓库吧
@@ -19,8 +19,8 @@
 ```xml
 <dependency>
     <groupId>online.flowerinsnow</groupId>
-    <artifactId>SaussureaUtils-[模块]</artifactId>
-    <version>2.1.1</version>
+    <artifactId>saussureautils-[模块]</artifactId>
+    <version>3.0.0</version>
 </dependency>
 ```
 建议在shade时使用relocation来防止依赖冲突
