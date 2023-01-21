@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>online.flowerinsnow</groupId>
-        <artifactId>SaussureaUtils</artifactId>
-        <version>2.1.1</version>
+        <artifactId>saussureautils</artifactId>
+        <version>3.0.0</version>
     </parent>
 
-    <artifactId>SaussureaUtils-Spigot-112</artifactId>
+    <artifactId>saussureautils-spigot-112</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -27,8 +27,9 @@
     <dependencies>
         <dependency>
             <groupId>online.flowerinsnow</groupId>
-            <artifactId>SaussureaUtils-Spigot-Common</artifactId>
+            <artifactId>saussureautils-spigot-common</artifactId>
             <version>${project.parent.version}</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -36,6 +37,7 @@
             <artifactId>spigot-api</artifactId>
             <version>1.12.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>

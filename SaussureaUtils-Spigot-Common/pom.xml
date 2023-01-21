@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>SaussureaUtils</artifactId>
+        <artifactId>saussureautils</artifactId>
         <groupId>online.flowerinsnow</groupId>
-        <version>2.1.1</version>
+        <version>3.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>SaussureaUtils-Spigot-Common</artifactId>
+    <artifactId>saussureautils-spigot-common</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -50,11 +50,6 @@
 
     <repositories>
         <repository>
-            <id>flowerinsnow</id>
-            <url>https://maven.flowerinsnow.online:10443/repository/maven-public/</url>
-        </repository>
-
-        <repository>
             <id>spigotmc</id>
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
@@ -63,8 +58,9 @@
     <dependencies>
         <dependency>
             <groupId>online.flowerinsnow</groupId>
-            <artifactId>SaussureaUtils-Common</artifactId>
+            <artifactId>saussureautils-common</artifactId>
             <version>${project.parent.version}</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -72,6 +68,7 @@
             <artifactId>spigot-api</artifactId>
             <version>1.13.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>

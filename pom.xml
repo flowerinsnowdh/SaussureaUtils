@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>online.flowerinsnow</groupId>
-    <artifactId>SaussureaUtils</artifactId>
+    <artifactId>saussureautils</artifactId>
     <packaging>pom</packaging>
-    <version>2.1.1</version>
+    <version>3.0.0</version>
     <modules>
-        <module>SaussureaUtils-Common</module>
-        <module>SaussureaUtils-Spigot-18-111</module>
-        <module>SaussureaUtils-Spigot-Common</module>
-        <module>SaussureaUtils-XML</module>
-        <module>SaussureaUtils-Spigot-112</module>
+        <module>saussureautils-common</module>
+        <module>saussureautils-spigot-18-111</module>
+        <module>saussureautils-spigot-common</module>
+        <module>saussureautils-xml</module>
+        <module>saussureautils-spigot-112</module>
     </modules>
 
     <properties>

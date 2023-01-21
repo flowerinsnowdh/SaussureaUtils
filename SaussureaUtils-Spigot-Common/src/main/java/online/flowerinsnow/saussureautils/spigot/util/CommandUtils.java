@@ -13,7 +13,7 @@ import java.util.*;
         {
                 @Dependency(
                         groupId = "online.flowerinsnow",
-                        artifactId = "SaussureaUtils-Spigot-Common",
+                        artifactId = "saussureautils-spigot-common",
                         version = SaussureUtils.VERSION
                 ),
                 @Dependency(

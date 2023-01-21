@@ -1,7 +1,7 @@
-package online.flowerinsnow.xml.node;
+package online.flowerinsnow.saussureautils.xml.node;
 
-import online.flowerinsnow.xml.XMLFactory;
-import online.flowerinsnow.xml.exception.XMLWrongTypeException;
+import online.flowerinsnow.saussureautils.xml.exception.XMLWrongTypeException;
+import online.flowerinsnow.saussureautils.xml.XMLFactory;
 import org.w3c.dom.*;
 
 import java.util.*;

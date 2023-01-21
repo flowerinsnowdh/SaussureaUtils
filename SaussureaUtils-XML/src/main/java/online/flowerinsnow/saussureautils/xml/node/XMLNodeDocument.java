@@ -1,7 +1,7 @@
-package online.flowerinsnow.xml.node;
+package online.flowerinsnow.saussureautils.xml.node;
 
-import online.flowerinsnow.xml.XMLFactory;
-import online.flowerinsnow.xml.exception.XMLIllegalOperationException;
+import online.flowerinsnow.saussureautils.xml.exception.XMLIllegalOperationException;
+import online.flowerinsnow.saussureautils.xml.XMLFactory;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 

@@ -1,4 +1,4 @@
-package online.flowerinsnow.xml.exception;
+package online.flowerinsnow.saussureautils.xml.exception;
 
 public class XMLWrongTypeException extends RuntimeException {
     public XMLWrongTypeException() {

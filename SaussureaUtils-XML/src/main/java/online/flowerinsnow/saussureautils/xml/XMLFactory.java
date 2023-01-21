@@ -1,10 +1,10 @@
-package online.flowerinsnow.xml;
+package online.flowerinsnow.saussureautils.xml;
 
-import online.flowerinsnow.xml.exception.XMLParseException;
-import online.flowerinsnow.xml.node.XMLNodeComment;
-import online.flowerinsnow.xml.node.XMLNodeDocument;
-import online.flowerinsnow.xml.node.XMLNodeElement;
-import online.flowerinsnow.xml.node.XMLNodeText;
+import online.flowerinsnow.saussureautils.xml.exception.XMLParseException;
+import online.flowerinsnow.saussureautils.xml.node.XMLNodeComment;
+import online.flowerinsnow.saussureautils.xml.node.XMLNodeDocument;
+import online.flowerinsnow.saussureautils.xml.node.XMLNodeElement;
+import online.flowerinsnow.saussureautils.xml.node.XMLNodeText;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 

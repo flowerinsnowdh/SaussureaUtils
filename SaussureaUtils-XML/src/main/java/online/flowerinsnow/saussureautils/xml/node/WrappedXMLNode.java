@@ -1,4 +1,4 @@
-package online.flowerinsnow.xml.node;
+package online.flowerinsnow.saussureautils.xml.node;
 
 import org.w3c.dom.*;
 

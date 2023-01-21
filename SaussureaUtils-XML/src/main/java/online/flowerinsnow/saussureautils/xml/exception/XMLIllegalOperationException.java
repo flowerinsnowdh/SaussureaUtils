@@ -1,4 +1,4 @@
-package online.flowerinsnow.xml.exception;
+package online.flowerinsnow.saussureautils.xml.exception;
 
 /**
  * 在XML非法操作时抛出

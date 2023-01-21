@@ -1,4 +1,4 @@
-package online.flowerinsnow.xml.node;
+package online.flowerinsnow.saussureautils.xml.node;
 
 /**
  * XML节点类型
