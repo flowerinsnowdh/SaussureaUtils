@@ -9,11 +9,10 @@
 - `xml` - 一个XML解析器，基于W3C DOM，[README.md](saussureautils-xml/README.md)
 
 # 使用
-我怎么不会用github packages啊，那算了，用我自己的仓库吧
 ```xml
 <repository>
-    <id>flowerinsnow</id>
-    <url>https://maven.flowerinsnow.online:10443/repository/maven-public/</url>
+    <id>SaussureaUtils</id>
+    <url>https://maven.pkg.github.com/flowerinsnowdh/SaussureaUtils</url>
 </repository>
 ```
 ```xml
