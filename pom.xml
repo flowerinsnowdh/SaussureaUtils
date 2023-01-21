@@ -10,10 +10,10 @@
     <version>3.0.0</version>
     <modules>
         <module>saussureautils-common</module>
-        <module>saussureautils-spigot-18-111</module>
         <module>saussureautils-spigot-common</module>
-        <module>saussureautils-xml</module>
+        <module>saussureautils-spigot-18-111</module>
         <module>saussureautils-spigot-112</module>
+        <module>saussureautils-xml</module>
     </modules>
 
     <properties>
@@ -23,8 +23,8 @@
 
     <distributionManagement>
         <repository>
-            <id>flowerinsnow</id>
-            <url>https://maven.flowerinsnow.online:10443/repository/maven-public/</url>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/flowerinsnowdh/SaussureaUtils</url>
         </repository>
     </distributionManagement>
 </project>
