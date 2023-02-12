@@ -1,6 +1,10 @@
 package online.flowerinsnow.saussureautils.reflect;
 
+import online.flowerinsnow.saussureautils.exception.LogicException;
+import online.flowerinsnow.saussureautils.exception.ShouldNotOccurException;
 import online.flowerinsnow.saussureautils.object.IExceptionHandler;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -8,7 +12,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
-public class ReflectUtils {
+/**
+ * 有关Java反射的常用类
+ */
+public abstract class ReflectUtils {
     private ReflectUtils() {
     }
 
@@ -19,15 +26,17 @@ public class ReflectUtils {
      * @param fieldName 成员变量名
      * @return 获取的字段
      */
-    public static Object getField(Object object, String fieldName) {
+    public static @Nullable Object getField(@NotNull Object object, @NotNull String fieldName) {
         Objects.requireNonNull(object);
         Objects.requireNonNull(fieldName);
         try {
             Field field = object.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
             return field.get(object);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchFieldException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         }
     }
 
@@ -41,7 +50,7 @@ public class ReflectUtils {
      * @param <T> 对应类型
      * @throws ClassCastException 当转换错误时抛出
      */
-    public static <T> T getField(Object object, String fieldName, Class<T> type) throws ClassCastException {
+    public static <T> @Nullable T getField(@NotNull Object object, @NotNull String fieldName, @NotNull Class<T> type) throws ClassCastException {
         Objects.requireNonNull(object);
         Objects.requireNonNull(fieldName);
         Objects.requireNonNull(type);
@@ -55,15 +64,17 @@ public class ReflectUtils {
      * @param fieldName 静态变量名
      * @return 获取的字段
      */
-    public static Object getStatic(Class<?> cls, String fieldName) {
+    public static @Nullable Object getStatic(@NotNull Class<?> cls, @NotNull String fieldName) {
         Objects.requireNonNull(cls);
         Objects.requireNonNull(fieldName);
         try {
             Field field = cls.getDeclaredField(fieldName);
             field.setAccessible(true);
             return field.get(null);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchFieldException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         }
     }
 
@@ -77,7 +88,7 @@ public class ReflectUtils {
      * @param <T> 对应类型
      * @throws ClassCastException 当转换错误时抛出
      */
-    public static <T> T getStatic(Class<?> cls, String fieldName, Class<T> type) throws ClassCastException {
+    public static <T> @Nullable T getStatic(@NotNull Class<?> cls, @NotNull String fieldName, @NotNull Class<T> type) throws ClassCastException {
         Objects.requireNonNull(cls);
         Objects.requireNonNull(fieldName);
         Objects.requireNonNull(type);
@@ -91,15 +102,17 @@ public class ReflectUtils {
      * @param fieldName 变量名
      * @param value 值
      */
-    public static void putField(Object object, String fieldName, Object value) {
+    public static void putField(@NotNull Object object, @NotNull String fieldName, @Nullable Object value) {
         Objects.requireNonNull(object);
         Objects.requireNonNull(fieldName);
         try {
             Field field = object.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
             field.set(object, value);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchFieldException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         }
     }
 
@@ -110,15 +123,17 @@ public class ReflectUtils {
      * @param fieldName 变量名
      * @param value 值
      */
-    public static void putStatic(Class<?> cls, String fieldName, Object value) {
+    public static void putStatic(@NotNull Class<?> cls, @NotNull String fieldName, @Nullable Object value) {
         Objects.requireNonNull(cls);
         Objects.requireNonNull(fieldName);
         try {
             Field field = cls.getDeclaredField(fieldName);
             field.setAccessible(true);
             field.set(null, value);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchFieldException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         }
     }
 
@@ -132,7 +147,7 @@ public class ReflectUtils {
      * @return 转换后的返回值
      * @throws Throwable 当调用的方法抛出异常时抛出
      */
-    public static Object invokeVirtual(Object object, String methodName, Class<?>[] paramTypes, Object... params) throws Throwable {
+    public static @Nullable Object invokeVirtual(@NotNull Object object, @NotNull String methodName, @NotNull Class<?>[] paramTypes, @Nullable Object... params) throws Throwable {
         Objects.requireNonNull(object);
         Objects.requireNonNull(methodName);
         Objects.requireNonNull(paramTypes);
@@ -140,8 +155,10 @@ public class ReflectUtils {
             Method method = object.getClass().getDeclaredMethod(methodName, paramTypes);
             method.setAccessible(true);
             return method.invoke(object, params);
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         } catch (InvocationTargetException e) {
             throw e.getCause();
         }
@@ -157,7 +174,7 @@ public class ReflectUtils {
      * @return 转换后的返回值
      * @throws Throwable 当调用的方法抛出异常时抛出
      */
-    public static Object invokeStatic(Class<?> cls, String methodName, Class<?>[] paramTypes, Object... params) throws Throwable {
+    public static @Nullable Object invokeStatic(@NotNull Class<?> cls, @NotNull String methodName, @NotNull Class<?>[] paramTypes, @Nullable Object... params) throws Throwable {
         Objects.requireNonNull(cls);
         Objects.requireNonNull(methodName);
         Objects.requireNonNull(paramTypes);
@@ -165,8 +182,10 @@ public class ReflectUtils {
             Method method = cls.getDeclaredMethod(methodName, paramTypes);
             method.setAccessible(true);
             return method.invoke(null, params);
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         } catch (InvocationTargetException e) {
             throw e.getCause();
         }
@@ -182,7 +201,7 @@ public class ReflectUtils {
      * @param params 调用参数
      * @return 转换后的返回值
      */
-    public static Object invokeVirtual(Object object, String methodName, Class<?>[] paramTypes, IExceptionHandler<Throwable> exceptionHandler, Object... params) {
+    public static @Nullable Object invokeVirtual(@NotNull Object object, @NotNull String methodName, @NotNull Class<?>[] paramTypes, @Nullable IExceptionHandler<Throwable> exceptionHandler, @Nullable Object... params) {
         Objects.requireNonNull(object);
         Objects.requireNonNull(methodName);
         Objects.requireNonNull(paramTypes);
@@ -190,8 +209,10 @@ public class ReflectUtils {
             Method method = object.getClass().getDeclaredMethod(methodName, paramTypes);
             method.setAccessible(true);
             return method.invoke(object, params);
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         } catch (InvocationTargetException e) {
             if (exceptionHandler != null) {
                 exceptionHandler.accept(e.getCause());
@@ -210,7 +231,7 @@ public class ReflectUtils {
      * @param params 调用参数
      * @return 转换后的返回值
      */
-    public static Object invokeStatic(Class<?> cls, String methodName, Class<?>[] paramTypes, IExceptionHandler<Throwable> exceptionHandler, Object... params) {
+    public static @Nullable Object invokeStatic(@NotNull Class<?> cls, @NotNull String methodName, @NotNull Class<?>[] paramTypes, @Nullable IExceptionHandler<Throwable> exceptionHandler, @Nullable Object... params) {
         Objects.requireNonNull(cls);
         Objects.requireNonNull(methodName);
         Objects.requireNonNull(paramTypes);
@@ -218,8 +239,10 @@ public class ReflectUtils {
             Method method = cls.getDeclaredMethod(methodName, paramTypes);
             method.setAccessible(true);
             return method.invoke(null, params);
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         } catch (InvocationTargetException e) {
             if (exceptionHandler != null) {
                 exceptionHandler.accept(e.getCause());
@@ -240,7 +263,7 @@ public class ReflectUtils {
      * @param <T> 指定类型
      * @throws Throwable 当调用的方法抛出异常时抛出
      */
-    public static <T> T invokeVirtual(Object object, String methodName, Class<?>[] paramTypes, Class<T> returnType, Object... params) throws Throwable {
+    public static <T> @Nullable T invokeVirtual(@NotNull Object object, @NotNull String methodName, @NotNull Class<?>[] paramTypes, @NotNull Class<T> returnType, @Nullable Object... params) throws Throwable {
         Objects.requireNonNull(object);
         Objects.requireNonNull(methodName);
         Objects.requireNonNull(paramTypes);
@@ -249,8 +272,10 @@ public class ReflectUtils {
             Method method = object.getClass().getDeclaredMethod(methodName, paramTypes);
             method.setAccessible(true);
             return returnType.cast(method.invoke(object, params));
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         } catch (InvocationTargetException e) {
             throw e.getCause();
         }
@@ -268,7 +293,7 @@ public class ReflectUtils {
      * @param <T> 指定类型
      * @throws Throwable 当调用的方法抛出异常时抛出
      */
-    public static <T> T invokeStatic(Class<?> cls, String methodName, Class<?>[] paramTypes, Class<T> returnType, Object... params) throws Throwable {
+    public static <T> @Nullable T invokeStatic(@NotNull Class<?> cls, @NotNull String methodName, @NotNull Class<?>[] paramTypes, @NotNull Class<T> returnType, @Nullable Object... params) throws Throwable {
         Objects.requireNonNull(cls);
         Objects.requireNonNull(methodName);
         Objects.requireNonNull(paramTypes);
@@ -277,8 +302,10 @@ public class ReflectUtils {
             Method method = cls.getDeclaredMethod(methodName, paramTypes);
             method.setAccessible(true);
             return returnType.cast(method.invoke(null, params));
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         } catch (InvocationTargetException e) {
             throw e.getCause();
         }
@@ -296,7 +323,7 @@ public class ReflectUtils {
      * @return 转换后的返回值
      * @param <T> 指定类型
      */
-    public static <T> T invokeVirtual(Object object, String methodName, Class<?>[] paramTypes, Class<T> returnType, IExceptionHandler<Throwable> exceptionHandler, Object... params) {
+    public static <T> @Nullable T invokeVirtual(@NotNull Object object, @NotNull String methodName, @NotNull Class<?>[] paramTypes, @NotNull Class<T> returnType, @Nullable IExceptionHandler<Throwable> exceptionHandler, @Nullable Object... params) {
         Objects.requireNonNull(object);
         Objects.requireNonNull(methodName);
         Objects.requireNonNull(paramTypes);
@@ -305,8 +332,10 @@ public class ReflectUtils {
             Method method = object.getClass().getDeclaredMethod(methodName, paramTypes);
             method.setAccessible(true);
             return returnType.cast(method.invoke(object, params));
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         } catch (InvocationTargetException e) {
             if (exceptionHandler != null) {
                 exceptionHandler.accept(e.getCause());
@@ -327,7 +356,7 @@ public class ReflectUtils {
      * @return 转换后的返回值
      * @param <T> 指定类型
      */
-    public static <T> T invokeStatic(Class<?> cls, String methodName, Class<?>[] paramTypes, Class<T> returnType, IExceptionHandler<Throwable> exceptionHandler, Object... params) {
+    public static <T> @Nullable T invokeStatic(@NotNull Class<?> cls, @NotNull String methodName, @NotNull Class<?>[] paramTypes, @NotNull Class<T> returnType, @Nullable IExceptionHandler<Throwable> exceptionHandler, @Nullable Object... params) {
         Objects.requireNonNull(cls);
         Objects.requireNonNull(methodName);
         Objects.requireNonNull(paramTypes);
@@ -336,8 +365,10 @@ public class ReflectUtils {
             Method method = cls.getDeclaredMethod(methodName, paramTypes);
             method.setAccessible(true);
             return returnType.cast(method.invoke(null, params));
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         } catch (InvocationTargetException e) {
             if (exceptionHandler != null) {
                 exceptionHandler.accept(e.getCause());
@@ -353,7 +384,7 @@ public class ReflectUtils {
      * @param exceptionHandler 异常处理器，可为空
      * @return 获取的类
      */
-    public static Class<?> getClass(String name, IExceptionHandler<ClassNotFoundException> exceptionHandler) {
+    public static @Nullable Class<?> getClass(@NotNull String name, @Nullable IExceptionHandler<ClassNotFoundException> exceptionHandler) {
         Objects.requireNonNull(name);
         try {
             return Class.forName(name);
@@ -373,7 +404,7 @@ public class ReflectUtils {
      * @return 获取的类
      * @throws ClassNotFoundException if the class cannot be located
      */
-    public static Class<?> getClass(String pkg, String name) throws ClassNotFoundException {
+    public static @NotNull Class<?> getClass(@NotNull String pkg, @NotNull String name) throws ClassNotFoundException {
         Objects.requireNonNull(pkg);
         Objects.requireNonNull(name);
         return Class.forName(pkg + "." + name);
@@ -387,10 +418,9 @@ public class ReflectUtils {
      * @param exceptionHandler 异常处理器，可为空
      * @return 获取的类
      */
-    public static Class<?> getClass(String pkg, String name, IExceptionHandler<ClassNotFoundException> exceptionHandler) {
-        Objects.requireNonNull(pkg);
+    public static @Nullable Class<?> getClass(@Nullable String pkg, @NotNull String name, @Nullable IExceptionHandler<ClassNotFoundException> exceptionHandler) {
         Objects.requireNonNull(name);
-        return getClass(pkg + "." + name, exceptionHandler);
+        return getClass((pkg == null ? "" : pkg + ".") + name, exceptionHandler);
     }
 
     /**
@@ -401,16 +431,21 @@ public class ReflectUtils {
      * @param params 参数
      * @return new出来的对象
      * @param <T> 类类型
-     * @throws InvocationTargetException if the underlying constructor throws an exception.
+     * @throws Throwable if the underlying constructor throws an exception.
      */
-    public static <T> T newInstance(Class<T> cls, Class<?>[] paramTypes, Object... params) throws InvocationTargetException {
+    public static <T> @NotNull T newInstance(@NotNull Class<T> cls, @NotNull Class<?>[] paramTypes, @Nullable Object... params) throws Throwable {
         Objects.requireNonNull(cls);
+        Objects.requireNonNull(paramTypes);
         try {
             Constructor<T> constructor = cls.getDeclaredConstructor(paramTypes);
             constructor.setAccessible(true);
             return constructor.newInstance(params);
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchMethodException | InstantiationException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
+        } catch (InvocationTargetException e) {
+            throw e.getCause();
         }
     }
 
@@ -424,17 +459,20 @@ public class ReflectUtils {
      * @return new出来的对象
      * @param <T> 类类型
      */
-    public static <T> T newInstance(Class<T> cls, Class<?>[] paramTypes, IExceptionHandler<InvocationTargetException> exceptionHandler, Object... params) {
+    public static <T> @Nullable T newInstance(@NotNull Class<T> cls, @NotNull  Class<?>[] paramTypes, @Nullable IExceptionHandler<Throwable> exceptionHandler, @Nullable Object... params) {
         Objects.requireNonNull(cls);
+        Objects.requireNonNull(paramTypes);
         try {
             Constructor<T> constructor = cls.getDeclaredConstructor(paramTypes);
             constructor.setAccessible(true);
             return constructor.newInstance(params);
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchMethodException | InstantiationException e) {
+            throw new LogicException(e);
+        } catch (IllegalAccessException e) {
+            throw new ShouldNotOccurException(e);
         } catch (InvocationTargetException e) {
             if (exceptionHandler != null) {
-                exceptionHandler.accept(e);
+                exceptionHandler.accept(e.getCause());
             }
             return null;
         }

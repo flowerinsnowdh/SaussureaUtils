@@ -34,6 +34,12 @@
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.2.1</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>24.0.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

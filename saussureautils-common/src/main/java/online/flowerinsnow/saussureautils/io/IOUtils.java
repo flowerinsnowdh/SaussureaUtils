@@ -1,6 +1,8 @@
 package online.flowerinsnow.saussureautils.io;
 
 import online.flowerinsnow.saussureautils.object.IExceptionHandler;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public final class IOUtils {
+public abstract class IOUtils {
     private IOUtils() {
     }
 
@@ -22,7 +24,7 @@ public final class IOUtils {
      *
      * @param acs 可关闭的对象
      */
-    public static void closeQuietly(AutoCloseable... acs) {
+    public static void closeQuietly(@Nullable AutoCloseable... acs) {
         for (AutoCloseable ac : acs) {
             if (ac != null) {
                 try {
@@ -41,7 +43,7 @@ public final class IOUtils {
      * @param options 选项
      * @throws IOException 当出现异常时抛出
      */
-    public static void copy(InputStream in, OutputStream out, CopyOption... options) throws IOException {
+    public static void copy(@NotNull InputStream in, @NotNull OutputStream out, @NotNull CopyOption... options) throws IOException {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         List<CopyOption> list = Arrays.asList(options);
@@ -70,7 +72,7 @@ public final class IOUtils {
      * @param options 选项
      * @return 若本次执行没有出现异常，返回true
      */
-    public static boolean copy(InputStream in, OutputStream out, IExceptionHandler<IOException> exceptionHandler, CopyOption... options) {
+    public static boolean copy(@NotNull InputStream in, @NotNull OutputStream out, @Nullable IExceptionHandler<IOException> exceptionHandler, @NotNull CopyOption... options) {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         try {
@@ -92,7 +94,7 @@ public final class IOUtils {
      * @param options 选项
      * @throws IOException 当出现异常时抛出
      */
-    public static void copy(Path in, OutputStream out, CopyOption... options) throws IOException {
+    public static void copy(@NotNull Path in, @NotNull OutputStream out, @NotNull CopyOption... options) throws IOException {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         InputStream i = null;
@@ -113,7 +115,7 @@ public final class IOUtils {
      * @param options 选项
      * @return 若本次执行没有出现异常，返回true
      */
-    public static boolean copy(Path in, OutputStream out, IExceptionHandler<IOException> exceptionHandler, CopyOption... options) {
+    public static boolean copy(@NotNull Path in, @NotNull OutputStream out, @Nullable IExceptionHandler<IOException> exceptionHandler, @NotNull CopyOption... options) {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         try {
@@ -135,7 +137,7 @@ public final class IOUtils {
      * @param options 选项
      * @throws IOException 当出现异常时抛出
      */
-    public static void copy(File in, OutputStream out, CopyOption... options) throws IOException {
+    public static void copy(@NotNull File in, @NotNull OutputStream out, @NotNull CopyOption... options) throws IOException {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         copy(in.toPath(), out, options);
@@ -150,7 +152,7 @@ public final class IOUtils {
      * @param options 选项
      * @return 若本次执行没有出现异常，返回true
      */
-    public static boolean copy(File in, OutputStream out, IExceptionHandler<IOException> exceptionHandler, CopyOption... options) {
+    public static boolean copy(@NotNull File in, @NotNull OutputStream out, @Nullable IExceptionHandler<IOException> exceptionHandler, @NotNull CopyOption... options) {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         return copy(in.toPath(), out, exceptionHandler, options);
@@ -165,7 +167,7 @@ public final class IOUtils {
      * @param options 选项
      * @throws IOException 当出现异常时抛出
      */
-    public static void copy(InputStream in, Path out, CopyOption... options) throws IOException {
+    public static void copy(@NotNull InputStream in, @NotNull Path out, @NotNull CopyOption... options) throws IOException {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         OutputStream o = null;
@@ -187,7 +189,7 @@ public final class IOUtils {
      * @param options 选项
      * @return 若本次执行没有出现异常，返回true
      */
-    public static boolean copy(InputStream in, Path out, IExceptionHandler<IOException> exceptionHandler, CopyOption... options) {
+    public static boolean copy(@NotNull InputStream in, @NotNull Path out, @Nullable IExceptionHandler<IOException> exceptionHandler, @NotNull CopyOption... options) {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         try {
@@ -210,7 +212,7 @@ public final class IOUtils {
      * @param options 选项
      * @throws IOException 当出现异常时抛出
      */
-    public static void copy(InputStream in, File out, CopyOption... options) throws IOException {
+    public static void copy(@NotNull InputStream in, @NotNull File out, @NotNull CopyOption... options) throws IOException {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         copy(in, out.toPath(), options);
@@ -225,7 +227,7 @@ public final class IOUtils {
      * @param options 选项
      * @return 若本次执行没有出现异常，返回true
      */
-    public static boolean copy(InputStream in, File out, IExceptionHandler<IOException> exceptionHandler, CopyOption... options) {
+    public static boolean copy(@NotNull InputStream in, @NotNull File out, @Nullable IExceptionHandler<IOException> exceptionHandler, @NotNull CopyOption... options) {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         return copy(in, out.toPath(), exceptionHandler, options);
@@ -240,7 +242,7 @@ public final class IOUtils {
      * @param options 选项
      * @throws IOException 当出现异常时抛出
      */
-    public static void copy(Path in, Path out, CopyOption... options) throws IOException {
+    public static void copy(@NotNull Path in, @NotNull Path out, @NotNull CopyOption... options) throws IOException {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         InputStream i = null;
@@ -265,7 +267,7 @@ public final class IOUtils {
      * @param options 选项
      * @return 若本次执行没有出现异常，返回true
      */
-    public static boolean copy(Path in, Path out, IExceptionHandler<IOException> exceptionHandler, CopyOption... options) {
+    public static boolean copy(@NotNull Path in, @NotNull Path out, @Nullable IExceptionHandler<IOException> exceptionHandler, @NotNull CopyOption... options) {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         try {
@@ -288,7 +290,7 @@ public final class IOUtils {
      * @param options 选项
      * @throws IOException 当出现异常时抛出
      */
-    public static void copy(Path in, File out, CopyOption... options) throws IOException {
+    public static void copy(@NotNull Path in, @NotNull File out, @NotNull CopyOption... options) throws IOException {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         copy(in, out.toPath(), options);
@@ -304,7 +306,7 @@ public final class IOUtils {
      * @param options 选项
      * @return 若本次执行没有出现异常，返回true
      */
-    public static boolean copy(Path in, File out, IExceptionHandler<IOException> exceptionHandler, CopyOption... options) {
+    public static boolean copy(@NotNull Path in, @NotNull File out, @Nullable IExceptionHandler<IOException> exceptionHandler, @NotNull CopyOption... options) {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         try {
@@ -327,7 +329,7 @@ public final class IOUtils {
      * @param options 选项
      * @throws IOException 当出现异常时抛出
      */
-    public static void copy(File in, Path out, CopyOption... options) throws IOException {
+    public static void copy(@NotNull File in, @NotNull Path out, @NotNull CopyOption... options) throws IOException {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         copy(in.toPath(), out, options);
@@ -343,7 +345,7 @@ public final class IOUtils {
      * @param options 选项
      * @return 若本次执行没有出现异常，返回true
      */
-    public static boolean copy(File in, Path out, IExceptionHandler<IOException> exceptionHandler, CopyOption... options) {
+    public static boolean copy(@NotNull File in, @NotNull Path out, @Nullable IExceptionHandler<IOException> exceptionHandler, @NotNull CopyOption... options) {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         try {
@@ -366,7 +368,7 @@ public final class IOUtils {
      * @param options 选项
      * @throws IOException 当出现异常时抛出
      */
-    public static void copy(File in, File out, CopyOption... options) throws IOException {
+    public static void copy(@NotNull File in, @NotNull File out, @NotNull  CopyOption... options) throws IOException {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         copy(in.toPath(), out.toPath(), options);
@@ -382,7 +384,7 @@ public final class IOUtils {
      * @param options 选项
      * @return 若本次执行没有出现异常，返回true
      */
-    public static boolean copy(File in, File out, IExceptionHandler<IOException> exceptionHandler, CopyOption... options) {
+    public static boolean copy(@NotNull File in, @NotNull File out, @Nullable IExceptionHandler<IOException> exceptionHandler, @NotNull CopyOption... options) {
         Objects.requireNonNull(in);
         Objects.requireNonNull(out);
         try {
@@ -403,7 +405,7 @@ public final class IOUtils {
      * @return 若创建完成，返回true
      * @throws IOException 当出现异常时抛出
      */
-    public static boolean createFileIfNotExists(Path path) throws IOException {
+    public static boolean createFileIfNotExists(@NotNull Path path) throws IOException {
         Objects.requireNonNull(path);
         return createFileIfNotExists(path.toFile());
     }
@@ -415,7 +417,7 @@ public final class IOUtils {
      * @return 若创建完成，返回true
      * @throws IOException 当出现异常时抛出
      */
-    public static boolean createFileIfNotExists(File file) throws IOException {
+    public static boolean createFileIfNotExists(@NotNull File file) throws IOException {
         Objects.requireNonNull(file);
         File parent = file.getParentFile();
         if (parent != null && !parent.exists()) {
@@ -436,7 +438,7 @@ public final class IOUtils {
      * @param exceptionHandler 异常处理器
      * @return 若创建完成，返回true
      */
-    public static boolean createFileIfNotExists(Path path, IExceptionHandler<IOException> exceptionHandler) {
+    public static boolean createFileIfNotExists(@NotNull Path path, @Nullable IExceptionHandler<IOException> exceptionHandler) {
         Objects.requireNonNull(path);
         try {
             return createFileIfNotExists(path);
@@ -455,7 +457,7 @@ public final class IOUtils {
      * @param exceptionHandler 异常处理器
      * @return 若创建完成，返回true
      */
-    public static boolean createFileIfNotExists(File file, IExceptionHandler<IOException> exceptionHandler) {
+    public static boolean createFileIfNotExists(@NotNull File file, @Nullable IExceptionHandler<IOException> exceptionHandler) {
         Objects.requireNonNull(file);
         try {
             return createFileIfNotExists(file);
@@ -473,7 +475,7 @@ public final class IOUtils {
      * @param file 文件或目录
      */
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    public static void delete(File file) {
+    public static void delete(@NotNull File file) {
         Objects.requireNonNull(file);
         if (file.isFile()) {
             file.delete();
@@ -491,7 +493,7 @@ public final class IOUtils {
      *
      * @param path 文件或目录
      */
-    public static void delete(Path path) {
+    public static void delete(@NotNull Path path) {
         Objects.requireNonNull(path);
         delete(path.toFile());
     }

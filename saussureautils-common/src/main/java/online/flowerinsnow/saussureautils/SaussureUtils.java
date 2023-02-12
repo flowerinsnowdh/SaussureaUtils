@@ -1,5 +1,7 @@
 package online.flowerinsnow.saussureautils;
 
+import org.jetbrains.annotations.NotNull;
+
 public class SaussureUtils {
-    public static final String VERSION = "3.0.0";
+    @NotNull public static final String VERSION = "3.0.0";
 }
