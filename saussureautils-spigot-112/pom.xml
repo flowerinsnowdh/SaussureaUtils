@@ -6,7 +6,7 @@
     <parent>
         <groupId>online.flowerinsnow</groupId>
         <artifactId>saussureautils</artifactId>
-        <version>3.0.1</version>
+        <version>3.1.0</version>
     </parent>
 
     <artifactId>saussureautils-spigot-112</artifactId>

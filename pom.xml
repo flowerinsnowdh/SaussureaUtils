@@ -7,7 +7,7 @@
     <groupId>online.flowerinsnow</groupId>
     <artifactId>saussureautils</artifactId>
     <packaging>pom</packaging>
-    <version>3.0.1</version>
+    <version>3.1.0</version>
     <modules>
         <module>saussureautils-common</module>
         <module>saussureautils-spigot-common</module>
