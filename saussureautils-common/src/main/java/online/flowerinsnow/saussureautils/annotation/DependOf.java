@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * 可以考虑一起打包进jar
  */
 @Target({ElementType.METHOD, ElementType.TYPE})
-@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface DependOf {
     Dependency[] value();
 }

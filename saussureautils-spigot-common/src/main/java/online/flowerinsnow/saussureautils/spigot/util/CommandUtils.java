@@ -19,9 +19,9 @@ import java.util.*;
                 @Dependency(
                         groupId = "org.spigotmc",
                         artifactId = "spigot-api",
-                        version = "1.13.2-R0.1-SNAPSHOT",
+                        version = "1.19.4-R0.1-SNAPSHOT",
                         minVersion = "1.8.3-R0.1-SNAPSHOT",
-                        maxVersion = "1.19.3-R0.1-SNAPSHOT"
+                        maxVersion = "1.19.4-R0.1-SNAPSHOT"
                 )
         }
 )
